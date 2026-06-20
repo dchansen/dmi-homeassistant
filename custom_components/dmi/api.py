@@ -162,7 +162,7 @@ class DMIApiClient:
         params = {
             "coords": coords,
             "crs": "crs84",
-            "parameter-name": "temperature-2m,wind-speed-10m,wind-dir-10m,relative-humidity,total-precipitation,cloud-cover",
+            "parameter-name": "temperature-2m,wind-speed-10m,wind-dir-10m,relative-humidity-2m,total-precipitation,fraction-of-cloud-cover",
             "f": "CoverageJSON",
         }
 
@@ -184,9 +184,9 @@ class DMIApiClient:
         temperature_data = ranges.get("temperature-2m", {}).get("values", [])
         wind_speed_data = ranges.get("wind-speed-10m", {}).get("values", [])
         wind_dir_data = ranges.get("wind-dir-10m", {}).get("values", [])
-        humidity_data = ranges.get("relative-humidity", {}).get("values", [])
+        humidity_data = ranges.get("relative-humidity-2m", {}).get("values", [])
         precipitation_data = ranges.get("total-precipitation", {}).get("values", [])
-        cloud_cover_data = ranges.get("cloud-cover", {}).get("values", [])
+        cloud_cover_data = ranges.get("fraction-of-cloud-cover", {}).get("values", [])
 
         for i, time_value in enumerate(time_values):
             forecast_entry: dict[str, Any] = {
